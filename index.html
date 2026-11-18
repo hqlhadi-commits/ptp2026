@@ -144,7 +144,8 @@ body[data-fasa="sebelum"] #video { order: 6; }
 body[data-fasa="sebelum"] #atur-cara { order: 7; }
 body[data-fasa="sebelum"] #pameran { order: 8; }
 body[data-fasa="sebelum"] #syarikat { order: 9; }
-body[data-fasa="sebelum"] #lokasi { order: 10; }
+body[data-fasa="sebelum"] #faq { order: 10; }
+body[data-fasa="sebelum"] #lokasi { order: 11; }
 
 body[data-fasa="hari"] #hero { order: 1; }
 body[data-fasa="hari"] #atur-cara { order: 2; }
@@ -156,6 +157,7 @@ body[data-fasa="hari"] #pameran { order: 7; }
 body[data-fasa="hari"] #video { order: 8; }
 body[data-fasa="hari"] #syarikat { order: 9; }
 body[data-fasa="hari"] #tentang { order: 10; }
+body[data-fasa="hari"] #faq { order: 11; }
 
 body[data-fasa="selepas"] #hero { order: 1; }
 body[data-fasa="selepas"] #video { order: 2; }
@@ -166,6 +168,7 @@ body[data-fasa="selepas"] #tentang { order: 6; }
 body[data-fasa="selepas"] #atur-cara { order: 7; }
 body[data-fasa="selepas"] #pameran { order: 8; }
 body[data-fasa="selepas"] #lokasi { order: 9; }
+body[data-fasa="selepas"] #faq { order: 10; }
 body[data-fasa="selepas"] #fakta { display: none; }
 
 body[data-fasa="sebelum"] [data-only]:not([data-only~="sebelum"]),
@@ -537,6 +540,57 @@ body.loaded .preloader { opacity: 0; visibility: hidden; }
 .logo-note { margin-top: 18px; font-size: 14px; color: var(--muted); }
 @media (max-width: 860px) { .logo-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; } }
 
+/* ---------- FAQ ---------- */
+#faq { background: var(--surface); }
+.faq-wrap { display: grid; grid-template-columns: 300px 1fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.faq-side { position: sticky; top: 104px; display: grid; gap: 16px; }
+.faq-side > p { color: var(--muted); }
+.faq-rsvp { margin-top: 8px; display: grid; gap: 4px; justify-items: start; padding: 22px; border-radius: 20px; background: var(--bg); }
+.faq-rsvp-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.faq-rsvp b { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.faq-groups { display: grid; gap: clamp(32px, 4vw, 44px); }
+.faq-group { display: grid; gap: 10px; }
+.faq-group-h { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+.faq-group-h span { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.faq-item { border-radius: 18px; background: var(--bg); transition: background-color .2s, box-shadow .2s; }
+.faq-item[open] { background: var(--surface); box-shadow: var(--shadow); }
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  display: grid; grid-template-columns: 1fr 32px; gap: 16px; align-items: center;
+  padding: 20px 22px; font-size: 17px; font-weight: 600; line-height: 1.45; color: var(--navy);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: ""; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%230E2250' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M8 3.5v9M3.5 8h9'/%3E%3C/svg%3E") center / 14px no-repeat;
+  box-shadow: 0 1px 2px rgba(14,34,80,0.08); transition: transform .25s ease, background-color .2s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); background-color: var(--bg); }
+.faq-item summary:hover { color: var(--blue); }
+.faq-a { padding: 0 22px 22px; display: grid; gap: 12px; color: var(--muted); font-size: 16px; line-height: 1.7; max-width: 72ch; }
+.faq-a strong, .faq-a b { color: var(--navy); font-weight: 600; }
+.faq-a ul { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.faq-a li::marker { color: var(--blue); }
+.faq-a a { color: var(--blue); font-weight: 500; word-break: break-word; }
+.faq-dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; }
+.faq-dl dt { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.faq-dl dd { margin: 0; color: var(--navy); font-weight: 500; }
+.faq-contacts { list-style: none; padding: 0 !important; gap: 10px !important; }
+.faq-contacts li { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 4px 16px; align-items: center; padding: 14px 16px; border-radius: 14px; background: var(--bg); }
+.faq-contacts span { font-size: 15px; }
+.faq-close { font-size: 15px; color: var(--muted); line-height: 1.7; padding-left: 16px; border-left: 3px solid var(--red); max-width: 72ch; }
+@media (max-width: 860px) {
+  .faq-wrap { grid-template-columns: 1fr; }
+  .faq-side { position: static; }
+  .faq-contacts li { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .faq-item summary { padding: 18px; font-size: 16px; }
+  .faq-a { padding: 0 18px 18px; font-size: 15px; }
+  .faq-dl { grid-template-columns: 1fr; gap: 2px; }
+  .faq-dl dd { margin-bottom: 8px; }
+}
+
 /* ---------- Lokasi & hubungi ---------- */
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .card { border-radius: 24px; padding: clamp(24px, 4vw, 40px); background: var(--surface); box-shadow: var(--shadow-lg); display: grid; gap: 16px; align-content: start; position: relative; overflow: hidden; }
@@ -545,6 +599,8 @@ body.loaded .preloader { opacity: 0; visibility: hidden; }
 .card dt { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
 .card dd { margin: 0; font-weight: 500; }
 .card .btn { justify-self: start; margin-top: 4px; }
+.loc-addr { color: var(--muted); line-height: 1.6; margin-top: -6px; }
+.loc-addr b { color: var(--navy); font-weight: 600; }
 .pin { position: absolute; right: clamp(28px, 6vw, 80px); top: 50%; width: clamp(80px, 11vw, 132px); height: auto; transform: translateY(-50%); }
 @media (max-width: 760px) { .pin { display: none; } }
 
@@ -606,6 +662,7 @@ body.is-draf .draf-bar { display: flex; }
       <li><a href="#peluncuran">Peluncuran</a></li>
       <li><a href="#atur-cara">Atur Cara</a></li>
       <li><a href="#lokasi">Lokasi</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <a class="btn" href="#maklumat">Maklumat Lanjut</a>
   </div>
@@ -650,7 +707,7 @@ body.is-draf .draf-bar { display: flex; }
               <span class="eb-label" id="hero-eyebrow">Butiran majlis</span>
               <span class="eb-value">Sunway Resort Hotel</span>
             </div>
-            <a class="ec-icon" href="https://www.google.com/maps/search/?api=1&amp;query=Sunway+Resort+Hotel" target="_blank" rel="noopener" aria-label="Buka lokasi di Google Maps">
+            <a class="ec-icon" href="https://www.google.com/maps/search/?api=1&amp;query=Grand+Lagoon+Ballroom+Sunway+Resort+Hotel" target="_blank" rel="noopener" aria-label="Buka lokasi di Google Maps">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             </a>
           </div>
@@ -663,7 +720,7 @@ body.is-draf .draf-bar { display: flex; }
         </div>
         <div class="eb-item" data-only="sebelum">
           <span class="eb-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Masa</span>
-          <span class="eb-value">8.30 pagi – 2.00 petang</span>
+          <span class="eb-value">8.30 pagi – 12.30 tengah hari</span>
         </div>
         <div class="eb-item eb-count" data-only="sebelum" aria-live="off">
           <span class="eb-label">Majlis bermula</span>
@@ -838,7 +895,7 @@ body.is-draf .draf-bar { display: flex; }
       <div class="agenda-side">
         <p class="eyebrow">Atur Cara</p>
         <h2 class="h2" id="atur-h">1 Disember 2026</h2>
-        <p>Sunway Resort Hotel. Majlis bermula 8.30 pagi dan tamat 2.00 petang.</p>
+        <p>Grand Lagoon Ballroom, Sunway Resort Hotel. Majlis bermula 8.30 pagi dan tamat 12.30 tengah hari.</p>
         <div class="legend">
           <span><i></i>Acara utama</span>
           <span data-only="hari"><i class="now"></i>Sedang berlangsung</span>
@@ -884,7 +941,122 @@ body.is-draf .draf-bar { display: flex; }
   </section>
 
   <!-- ================= LOKASI & HUBUNGI ================= -->
-  <section id="lokasi" class="sec" aria-labelledby="lokasi-h" style="padding-top:0">
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="sec" aria-labelledby="faq-h">
+    <div class="wrap faq-wrap">
+      <div class="faq-side">
+        <p class="eyebrow">Soalan Lazim</p>
+        <h2 class="h2" id="faq-h">Soalan lazim (FAQ)</h2>
+        <p>Jawapan kepada soalan yang kerap ditanya tentang majlis, pengesahan kehadiran dan urus setia.</p>
+        <div class="faq-rsvp">
+          <span class="faq-rsvp-label">Sahkan kehadiran sebelum</span>
+          <b>23 November 2026</b>
+          <a class="btn btn-primary" href="https://swiy.co/ptp-event" target="_blank" rel="noopener">Daftar kehadiran
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </div>
+      </div>
+
+      <div class="faq-groups">
+        <div class="faq-group">
+          <h3 class="faq-group-h"><span>01</span>Pengenalan &amp; aspirasi strategik</h3>
+          <details class="faq-item" id="faq-1">
+            <summary>Apakah tujuan utama penganjuran Majlis Pengiktirafan Program Transformasi Produktiviti (PTP) 2026?</summary>
+            <div class="faq-a">
+              <p>Majlis berprestij anjuran Perbadanan Produktiviti Malaysia (MPC) di bawah Kementerian Pelaburan, Perdagangan dan Industri (MITI) ini diadakan khusus untuk meraikan pencapaian cemerlang serta komitmen tinggi <strong>100 buah syarikat</strong> yang telah berjaya melaksanakan intervensi produktiviti di bawah PTP. Berpaksikan tema <strong>“Memacu Transformasi, Melonjak Produktiviti”</strong>, platform ini mengetengahkan kisah kejayaan sebenar industri dalam memperkukuh kecekapan operasi dan daya saing perniagaan.</p>
+            </div>
+          </details>
+          <details class="faq-item" id="faq-2">
+            <summary>Bagaimanakah majlis ini menyokong hala tuju pembangunan industri negara?</summary>
+            <div class="faq-a">
+              <p>Program Transformasi Produktiviti (PTP) merupakan salah satu pemangkin strategik di bawah <strong>Pelan Induk Perindustrian Baharu 2030 (NIMP 2030)</strong>. Melalui penganjuran majlis ini, MPC mempercepatkan agenda transformasi sektor pembuatan negara dengan menggalakkan penerapan teknologi, inovasi proses serta budaya kecemerlangan operasi yang mampan dalam kalangan pemain industri tempatan.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-group">
+          <h3 class="faq-group-h"><span>02</span>Nilai tambah &amp; manfaat penyertaan</h3>
+          <details class="faq-item" id="faq-3">
+            <summary>Apakah pengisian utama dan manfaat eksklusif yang bakal diperoleh oleh para hadirin?</summary>
+            <div class="faq-a">
+              <p>Kehadiran ke majlis ini menawarkan pulangan nilai strategik yang tinggi kepada organisasi anda melalui pengisian berikut:</p>
+              <ul>
+                <li><strong>Pembentangan 30 Projek Transformasi Produktiviti Terpilih:</strong> Saksikan secara langsung bagaimana 30 syarikat peneraju mengatasi cabaran operasi, mengoptimumkan kos, dan melonjakkan hasil melalui intervensi produktiviti yang terbukti berkesan.</li>
+                <li><strong>Penandaarasan (<em>Benchmarking</em>) Amalan Terbaik Industri:</strong> Dapatkan pendedahan terus kepada penyelesaian praktikal dan model transformasi yang boleh diadaptasi segera dalam operasi syarikat anda.</li>
+                <li><strong>Rangkaian Strategik Berimpak Tinggi:</strong> Bina jalinan kerjasama bersama barisan pengurusan tertinggi daripada 100 syarikat cemerlang, pakar industri, serta pegawai kanan kementerian dan agensi kerajaan.</li>
+                <li><strong>Pengiktirafan &amp; Inspirasi Kecemerlangan:</strong> Menyuntik semangat baharu kepada pasukan kepimpinan organisasi untuk terus menerajui perubahan dan inovasi produktiviti pada tahun 2026 dan seterusnya.</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-item" id="faq-4">
+            <summary>Siapakah yang paling sesuai menghadiri majlis ini?</summary>
+            <div class="faq-a">
+              <p>Majlis ini amat mengalu-alukan kehadiran pemilik perniagaan, Ketua Pegawai Eksekutif (CEO), Pengarah Urusan, Pengurus Besar, Ketua Operasi/Kilang, serta peneraju projek inovasi dan produktiviti organisasi. Sekiranya kepimpinan utama mempunyai kekangan jadual, pihak organisasi amat dialu-alukan untuk menghantar wakil kanan bagi memastikan organisasi tidak terlepas peluang menimba ilmu dan membina rangkaian strategik ini.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-group">
+          <h3 class="faq-group-h"><span>03</span>Butiran logistik &amp; pengesahan kehadiran</h3>
+          <details class="faq-item" id="faq-5">
+            <summary>Bilakah dan di manakah majlis ini akan berlangsung?</summary>
+            <div class="faq-a">
+              <p>Ketetapan penuh penganjuran majlis adalah seperti berikut:</p>
+              <dl class="faq-dl">
+                <dt>Tarikh</dt><dd>Selasa, 1 Disember 2026</dd>
+                <dt>Masa</dt><dd>8.30 pagi – 12.30 tengah hari</dd>
+                <dt>Lokasi</dt><dd>Grand Lagoon Ballroom, Sunway Resort Hotel, 1 Persiaran Lagoon, Bandar Sunway, Petaling Jaya, Selangor</dd>
+              </dl>
+            </div>
+          </details>
+          <details class="faq-item" id="faq-6">
+            <summary>Bagaimanakah cara untuk mengesahkan kehadiran (RSVP) dan bilakah tarikh tutupnya?</summary>
+            <div class="faq-a">
+              <p>Bagi melancarkan urusan penyelarasan tempat duduk dan logistik, para jemputan dimohon untuk mengesahkan kehadiran melalui langkah berikut:</p>
+              <ul>
+                <li><strong>Kaedah Pendaftaran:</strong> Imbas kod QR yang tertera pada surat jemputan rasmi atau daftar terus menerusi pautan <a href="https://swiy.co/ptp-event" target="_blank" rel="noopener">https://swiy.co/ptp-event</a>.</li>
+                <li><strong>Tarikh Tutup Pengesahan:</strong> Selewat-lewatnya pada 23 November 2026 (Isnin).</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-item" id="faq-7">
+            <summary>Adakah sebarang yuran penyertaan dikenakan untuk menghadiri majlis ini?</summary>
+            <div class="faq-a">
+              <p>Tiada sebarang bayaran dikenakan kepada tetamu dan wakil organisasi yang dijemput. Walau bagaimanapun, pengesahan kehadiran awal sebelum tarikh tutup adalah amat dihargai memandangkan tempat adalah terhad.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-group">
+          <h3 class="faq-group-h"><span>04</span>Saluran maklumat &amp; khidmat urus setia</h3>
+          <details class="faq-item" id="faq-8">
+            <summary>Di manakah saya boleh mendapatkan maklumat lanjut mengenai inisiatif produktiviti MPC?</summary>
+            <div class="faq-a">
+              <p>Anda boleh mengikuti perkembangan terkini, kisah kejayaan industri, dan program bimbingan produktiviti MPC melalui saluran rasmi berikut:</p>
+              <ul>
+                <li><strong>Portal Rasmi:</strong> <a href="https://www.mpc.gov.my" target="_blank" rel="noopener">www.mpc.gov.my</a></li>
+                <li><strong>Media Sosial Rasmi (Facebook, Instagram, X, YouTube &amp; TikTok):</strong> @MPCProductivity</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-item" id="faq-9">
+            <summary>Siapakah pegawai urus setia yang boleh dihubungi sekiranya terdapat pertanyaan lanjut?</summary>
+            <div class="faq-a">
+              <p>Pasukan urus setia MPC sentiasa bersedia membantu sebarang pertanyaan berkaitan penyelarasan kehadiran dan atur cara majlis:</p>
+              <ul class="faq-contacts">
+                <li><b>Puan Norafidah Ramli</b><span><a href="mailto:norafidah@mpc.gov.my">norafidah@mpc.gov.my</a></span><span><a href="tel:+60173655589">017-365 5589</a></span></li>
+                <li><b>Puan Nor Fitri Shazlin Zaini</b><span><a href="mailto:shazlin@mpc.gov.my">shazlin@mpc.gov.my</a></span><span><a href="tel:+601139043023">011-3904 3023</a></span></li>
+                <li><b>Puan Putri Nabila Mustafa Kamal</b><span><a href="mailto:pnabila@mpc.gov.my">pnabila@mpc.gov.my</a></span><span><a href="tel:+60109636645">010-963 6645</a></span></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <p class="faq-close">Sertai himpunan peneraju transformasi industri negara pada 1 Disember 2026 dan jadikan pengalaman serta amalan terbaik yang dikongsikan sebagai pemangkin lonjakan produktiviti organisasi anda selaras dengan aspirasi NIMP 2030.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lokasi" class="sec" aria-labelledby="lokasi-h">
     <div class="wrap">
       <div class="card">
         <svg class="pin" viewBox="0 0 56 56" aria-hidden="true">
@@ -896,12 +1068,13 @@ body.is-draf .draf-bar { display: flex; }
         </svg>
         <p class="eyebrow">Lokasi</p>
         <h3 id="lokasi-h">Sunway Resort Hotel</h3>
+        <p class="loc-addr"><b>Grand Lagoon Ballroom</b><br>1 Persiaran Lagoon, Bandar Sunway, Petaling Jaya, Selangor</p>
         <dl>
-          <dt>Tarikh</dt><dd>1 Disember 2026</dd>
-          <dt>Masa</dt><dd>8.30 pagi – 2.00 petang</dd>
+          <dt>Tarikh</dt><dd>Selasa, 1 Disember 2026</dd>
+          <dt>Masa</dt><dd>8.30 pagi – 12.30 tengah hari</dd>
           <dt>Pakaian</dt><dd>Korporat / Pakaian Pejabat</dd>
         </dl>
-        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Sunway+Resort+Hotel" target="_blank" rel="noopener">Buka di Google Maps
+        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Grand+Lagoon+Ballroom+Sunway+Resort+Hotel" target="_blank" rel="noopener">Buka di Google Maps
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
       </div>
     </div>
@@ -1057,7 +1230,7 @@ function renderVideos(fasa) {
 
 // ---- atur cara
 const toMin = (hhmm) => { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; };
-const END_MIN = toMin("14:00");
+const END_MIN = toMin("13:00");
 $("#agenda").innerHTML = AGENDA.map((a, i) =>
   '<li class="ag' + (a.key ? " key" : "") + '" data-i="' + i + '">' +
     '<span class="time">' + a.label + "</span>" +
@@ -1095,7 +1268,7 @@ function updateLive() {
   } else {
     const nx = AGENDA[cur + 1];
     set("#live-now", AGENDA[cur].tajuk); set("#live-now-t", AGENDA[cur].label);
-    set("#live-next", nx ? nx.tajuk : "Majlis tamat"); set("#live-next-t", nx ? nx.label : "2.00 petang");
+    set("#live-next", nx ? nx.tajuk : "Majlis tamat"); set("#live-next-t", nx ? nx.label : "");
   }
   set("#live-note", pratontonMinit !== null ? "Pratonton: dipaparkan seperti pada jam 10.20 pagi." : "Dikemas kini secara automatik mengikut waktu majlis.");
 }
