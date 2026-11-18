@@ -5,7 +5,7 @@ Laman pendaratan rasmi untuk Majlis Pengiktirafan PTP 2026 (1 Disember 2026, Sun
 ## Kandungan
 
 - `index.html` ialah keseluruhan laman dalam satu fail. Logo MPC, kod QR dan gambar kecil video sudah dibenam dalam fail ini.
-- Laman ini memuat dari luar: Google Fonts (Poppins), three.js r128 dari cdnjs (adegan 3D) dan pemain video Facebook.
+- Laman ini memuat dari luar: Google Fonts (Poppins) dan pemain video Facebook.
 
 ## Mengemas kini kandungan
 
