@@ -215,17 +215,39 @@ section { scroll-margin-top: 84px; }
 .hero-title .script { font-family: "Great Vibes", "Brush Script MT", cursive; font-weight: 400; font-size: clamp(42px, 4.8vw, 78px); line-height: 1.1; color: var(--navy); letter-spacing: 0; margin: 0 0 -0.06em 0.02em; }
 .hero-title .l2 { font-size: clamp(28px, 3.7vw, 60px); font-weight: 700; color: var(--blue); letter-spacing: -0.02em; line-height: 1.08; }
 .hero-title .l3 { font-size: clamp(54px, 8.6vw, 136px); font-weight: 800; color: var(--navy); letter-spacing: -0.045em; line-height: 0.96; margin-left: -0.04em; padding-bottom: 0.04em; }
-/* Kesan berterusan pada "Produktiviti": sapuan cahaya biru perlahan merentasi huruf, berulang */
+/* Kesan berterusan pada "Produktiviti" (kitaran 3.2 s, semua elemen diselaraskan):
+   sapuan cahaya merentasi huruf + komet di garis dasar yang berakhir pada titik merah (aksen poster) + kilauan kecil */
+.hero-title .l3 { position: relative; }
 .hero-title .l3 .shine {
-  background: linear-gradient(100deg, var(--navy) 0%, var(--navy) 42%, #2A6FD0 47%, #9CC3F2 50%, #2A6FD0 53%, var(--navy) 58%, var(--navy) 100%);
-  background-size: 260% 100%; background-position: 115% 0;
+  background: linear-gradient(100deg, var(--navy) 0%, var(--navy) 36%, #1E63C6 44%, #D6E8FD 50%, #1E63C6 56%, var(--navy) 64%, var(--navy) 100%);
+  background-size: 250% 100%; background-position: 115% 0;
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 6px 18px rgba(21,101,192,0.12));
 }
+.l3-fx { position: absolute; inset: 0; pointer-events: none; }
+.l3-fx i { position: absolute; display: block; }
+.l3-fx .track { left: 0.03em; right: 0.2em; bottom: -0.06em; height: 3px; border-radius: 3px; background: linear-gradient(90deg, rgba(21,101,192,0.05), rgba(21,101,192,0.3)); }
+.l3-fx .comet { bottom: calc(-0.06em - 1px); left: 0; width: 26%; height: 5px; border-radius: 5px; opacity: 0;
+  background: linear-gradient(90deg, rgba(156,195,242,0), #6EA8EE 55%, #FFFFFF); box-shadow: 0 0 14px 2px rgba(42,111,208,0.55); }
+.l3-fx .dot { right: calc(0.2em - 8px); bottom: calc(-0.06em - 6px); width: 15px; height: 15px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(227,27,35,0.45); }
+.l3-fx .spark { width: 0.24em; height: 0.24em; opacity: 0; transform: scale(0);
+  background: radial-gradient(circle, #FFFFFF 0 18%, #BFD9FB 40%, rgba(110,168,238,0) 70%);
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  filter: drop-shadow(0 0 6px rgba(110,168,238,0.9)); }
+.l3-fx .s1 { left: 14%; top: 8%; } .l3-fx .s2 { left: 47%; top: -2%; } .l3-fx .s3 { left: 83%; top: 14%; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-title .l3 .shine { animation: shine 6.5s cubic-bezier(.45,.05,.35,1) 2s infinite; }
-  @keyframes shine { 0% { background-position: 115% 0; } 55%, 100% { background-position: -15% 0; } }
+  .hero-title .l3 .shine, .l3-fx .comet, .l3-fx .dot, .l3-fx .spark { animation-duration: 3.2s; animation-iteration-count: infinite; animation-delay: 1.4s; animation-timing-function: cubic-bezier(.45,.05,.35,1); }
+  .hero-title .l3 .shine { animation-name: shine; }
+  .l3-fx .comet { animation-name: comet; }
+  .l3-fx .dot { animation-name: dotpop; animation-timing-function: ease-out; }
+  .l3-fx .spark { animation-name: spark; animation-timing-function: ease-in-out; }
+  .l3-fx .s1 { animation-delay: 1.75s; } .l3-fx .s2 { animation-delay: 2.15s; } .l3-fx .s3 { animation-delay: 2.55s; }
+  @keyframes shine { 0% { background-position: 115% 0; } 50%, 100% { background-position: -15% 0; } }
+  @keyframes comet { 0% { left: -6%; opacity: 0; } 8% { opacity: 1; } 48% { left: 74%; opacity: 1; } 56%, 100% { left: 76%; opacity: 0; } }
+  @keyframes dotpop { 0%, 46% { transform: scale(1); box-shadow: 0 0 0 0 rgba(227,27,35,0.45); } 52% { transform: scale(1.35); box-shadow: 0 0 0 6px rgba(227,27,35,0.25); } 80%, 100% { transform: scale(1); box-shadow: 0 0 0 16px rgba(227,27,35,0); } }
+  @keyframes spark { 0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); } 12% { opacity: 1; transform: scale(1) rotate(45deg); } 26% { opacity: 0; transform: scale(0.2) rotate(90deg); } }
 }
-.hero-title .l4 { justify-self: end; font-size: clamp(26px, 3vw, 48px); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-top: 2px; }
+.hero-title .l4 { justify-self: end; font-size: clamp(26px, 3vw, 48px); font-weight: 800; color: var(--navy); letter-spacing: -0.02em; margin-top: clamp(14px, 1.6vw, 24px); }
 
 .hero-top { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(280px, 1fr); gap: clamp(32px, 6vw, 96px); align-items: end; }
 .hero-note { display: grid; gap: 18px; max-width: 440px; justify-self: end; padding-bottom: 12px; }
@@ -720,7 +742,7 @@ body.is-draf .draf-bar { display: flex; }
       <h1 class="hero-title" id="hero-title">
         <span class="script rv d1">Majlis Pengiktirafan</span>
         <span class="l2 rv d2">Program Transformasi</span>
-        <span class="l3 rv d3"><span class="shine">Produktiviti</span></span>
+        <span class="l3 rv d3"><span class="shine">Produktiviti</span><span class="l3-fx" aria-hidden="true"><i class="track"></i><i class="comet"></i><i class="dot"></i><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i></span></span>
         <span class="l4 rv d4">2026</span>
       </h1>
         <div class="hero-note rv d4">
