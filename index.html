@@ -131,6 +131,7 @@ body.is-draf .ph {
 .nav.scrolled .btn { background: var(--navy); color: #FFFFFF; }
 @media (max-width: 960px) { .nav-links { display: none; } }
 @media (max-width: 560px) { .nav-inner { height: 58px; } .brand img { height: 30px; } .nav .btn { padding: 10px 14px; font-size: 13px; } }
+@media (max-width: 380px) { .nav-inner { gap: 12px; } .nav.scrolled .nav-inner { padding: 0 6px 0 16px; } .brand img { height: 26px; } .nav .btn { padding: 9px 12px; font-size: 12px; } }
 
 /* ---------- Susunan fasa ---------- */
 main { display: flex; flex-direction: column; }
@@ -564,7 +565,9 @@ body.loaded .preloader { opacity: 0; visibility: hidden; }
 .floor span.up.r { background: linear-gradient(135deg, #FF5A5F, #E31B23); box-shadow: -6px 6px 0 #9E1117, -10px 14px 18px rgba(14,34,80,0.25); }
 .floor span.up.n { background: linear-gradient(135deg, #2D4C8F, #0E2250); box-shadow: -6px 6px 0 #071434, -10px 14px 18px rgba(14,34,80,0.25); }
 .floor:hover span.up { transform: translateZ(34px); }
-@media (max-width: 860px) { .expo { grid-template-columns: 1fr; } .floor-stage { height: 300px; } .floor { grid-template-columns: repeat(6, 38px); gap: 8px; } .floor span { width: 38px; height: 38px; } }
+@media (max-width: 860px) { .expo { grid-template-columns: minmax(0, 1fr); } .floor-stage { height: 300px; } .floor { grid-template-columns: repeat(6, 38px); gap: 8px; } .floor span { width: 38px; height: 38px; } }
+
+@media (max-width: 420px) { .floor-stage { height: 250px; overflow: hidden; } .floor { grid-template-columns: repeat(6, 28px); gap: 6px; padding: 12px; } .floor span { width: 28px; height: 28px; border-radius: 7px; } }
 
 /* ---------- Syarikat ---------- */
 .logo-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 10px; }
